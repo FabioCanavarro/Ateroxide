@@ -5,6 +5,7 @@ edition = "2024"
 
 [dependencies]
 azalea = "0.13.0"
+parking_lot = "0.12.4"
 tokio = { version="1.47.1", features = ["full"]}
 
 [profile.dev]
