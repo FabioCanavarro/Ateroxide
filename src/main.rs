@@ -24,11 +24,19 @@ pub struct State {
 async fn handle(bot: Client, event: Event, state: State) {
     match event {
         Event::Spawn => {
-            bot.look_at(Vec3 { x: bot.position().x, y: bot.position().y - 2, z: bot.position().z });
-            bot.mine(Vec3 { x: bot.position().x, y: bot.position().y - 2, z: bot.position().z });
-            bot.mine(Vec3 { x: bot.position().x, y: bot.position().y - 2, z: bot.position().z });
+            bot.chat("Conducting the starting sequence!!");
 
+            bot.look_at(Vec3 { x: bot.position().x, y: bot.position().y - 1, z: bot.position().z });
+            let block_placing_pos = Vec3 { x: bot.position().x, y: bot.position().y - 1, z: bot.position().z };
+            bot.mine(&block_placing_pos);
+            bot.mine(Vec3 { x: bot.position().x, y: bot.position().y - 1, z: bot.position().z });
+            bot.mine(Vec3 { x: bot.position().x, y: bot.position().y - 1, z: bot.position().z });
+            bot.look_at(block_placing_pos.with_x(block_placing_pos.x + 1));
+            bot.block_interact(block_placing_pos.with_x(block_placing_pos.x + 1));
         },
+        Event::tick {
+            todo!()
+        }
         _ => ()
     }
 
