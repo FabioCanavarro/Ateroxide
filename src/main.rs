@@ -34,9 +34,9 @@ async fn handle(bot: Client, event: Event, state: State) {
             bot.look_at(block_placing_pos.with_x(block_placing_pos.x + 1));
             bot.block_interact(block_placing_pos.with_x(block_placing_pos.x + 1));
         },
-        Event::tick {
+        Event::tick =>  {
             todo!()
-        }
+        },
         _ => ()
     }
 
